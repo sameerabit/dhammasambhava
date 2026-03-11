@@ -126,11 +126,20 @@
       become_user: "{{ app_user }}"
       tags: [deploy]
 
+    - name: Fix npm cache permissions
+      file:
+        path: /var/www/.npm
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        recurse: yes
+      ignore_errors: yes
+      tags: [deploy]
+
     - name: Install NPM dependencies
-      npm:
-        path: "{{ release_path }}"
-        state: present
-        production: yes
+      shell: npm install --no-audit --loglevel=error
+      args:
+        chdir: "{{ release_path }}"
       become_user: "{{ app_user }}"
       tags: [deploy]
 
@@ -139,6 +148,15 @@
       args:
         chdir: "{{ release_path }}"
       become_user: "{{ app_user }}"
+      tags: [deploy]
+
+    - name: Remove existing storage and database directories
+      file:
+        path: "{{ release_path }}/{{ item }}"
+        state: absent
+      loop:
+        - storage
+        - database
       tags: [deploy]
 
     - name: Create symlinks to shared directories
