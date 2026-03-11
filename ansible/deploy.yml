@@ -100,10 +100,11 @@
 
     - name: Clone repository to release directory
       git:
-        repo: "https://github.com/{{ lookup('env', 'GITHUB_REPOSITORY') | default('yourusername/dhammasambhava', true) }}.git"
+        repo: "{{ git_repo | default('https://github.com/sameerabit/dhammasambhava.git') }}"
         dest: "{{ release_path }}"
         version: "{{ git_branch | default('main') }}"
         force: yes
+        accept_hostkey: yes
       become_user: "{{ app_user }}"
       tags: [deploy]
 
