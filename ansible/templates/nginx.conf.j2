@@ -1,8 +1,8 @@
 server {
-    listen 80;
-    listen [::]:80;
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-    server_name {{ app_domain }} www.{{ app_domain }};
+    server_name {{ app_domain }} www.{{ app_domain }} {{ ansible_host }};
     root {{ current_path }}/public;
 
     add_header X-Frame-Options "SAMEORIGIN";
