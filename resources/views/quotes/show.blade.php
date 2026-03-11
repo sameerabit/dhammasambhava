@@ -4,12 +4,12 @@
 
 @section('content')
 <!-- Quote Hero -->
-<section class="palm-leaf-bg py-20 md:py-32">
+<section class="bg-isha-cream py-24 md:py-40">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
             <!-- Back Button -->
             <div class="mb-8">
-                <a href="{{ route('quotes.index') }}" class="text-amber-700 hover:text-amber-900 flex items-center inline-flex">
+                <a href="{{ route('quotes.index') }}" class="text-isha-brown hover:text-isha-brown-dark flex items-center inline-flex">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                     </svg>
@@ -18,7 +18,7 @@
             </div>
 
             <!-- Main Quote Card -->
-            <div class="bg-white/90 backdrop-blur-sm rounded-lg border-4 border-amber-600 p-8 md:p-16 shadow-2xl manuscript-border">
+            <div class="bg-white rounded-lg p-10 md:p-20 shadow-sm">
                 <!-- Quote Icon -->
                 <div class="flex justify-center mb-8">
                     <svg class="w-16 h-16 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
@@ -27,13 +27,13 @@
                 </div>
 
                 <!-- Quote Text -->
-                <blockquote class="text-2xl md:text-4xl text-gray-800 leading-relaxed font-serif italic text-center mb-8">
+                <blockquote class="text-2xl md:text-4xl text-isha-brown-dark leading-relaxed font-serif italic text-center mb-8">
                     "{{ $quote->text }}"
                 </blockquote>
 
                 <!-- Author -->
                 <div class="text-center mb-6">
-                    <p class="text-2xl md:text-3xl font-bold text-amber-900">— {{ $quote->author }}</p>
+                    <p class="text-2xl md:text-3xl font-bold text-isha-brown-dark">— {{ $quote->author }}</p>
                     @if($quote->source)
                     <p class="text-lg text-gray-600 mt-2 italic">{{ $quote->source }}</p>
                     @endif
@@ -42,7 +42,7 @@
                 <!-- Category Badge -->
                 @if($quote->category)
                 <div class="flex justify-center">
-                    <span class="inline-block px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-semibold uppercase tracking-wide">
+                    <span class="inline-block px-4 py-2 bg-isha-cream-dark text-isha-brown-dark rounded-full text-sm font-semibold uppercase tracking-wide">
                         {{ $quote->category }}
                     </span>
                 </div>
@@ -52,7 +52,7 @@
             <!-- Share & Actions -->
             <div class="mt-8 flex flex-wrap gap-4 justify-center">
                 <button onclick="shareQuote()"
-                        class="px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition font-semibold flex items-center">
+                        class="px-6 py-3 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition font-semibold flex items-center">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
                     </svg>
@@ -75,9 +75,9 @@
 <section class="py-12 bg-white">
     <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto">
-            <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-8 border-l-4 border-amber-600">
-                <h2 class="text-2xl font-bold text-amber-900 mb-4">Reflect on This Wisdom</h2>
-                <div class="space-y-4 text-gray-700 leading-relaxed">
+            <div class="bg-isha-cream rounded-lg p-8 border-l-4 border-amber-600">
+                <h2 class="text-2xl font-bold text-isha-brown-dark mb-4">Reflect on This Wisdom</h2>
+                <div class="space-y-4 text-isha-brown leading-relaxed">
                     <p>
                         Take a moment to contemplate the depth of these words. How do they resonate with your current journey?
                         What insights can you draw from this teaching?
@@ -95,23 +95,23 @@
 @if($relatedQuotes->count() > 0)
 <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-amber-900 mb-8 text-center">More Wisdom to Explore</h2>
+        <h2 class="text-3xl font-bold text-isha-brown-dark mb-8 text-center">More Wisdom to Explore</h2>
 
         <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
             @foreach($relatedQuotes as $relatedQuote)
             <a href="{{ route('quotes.show', $relatedQuote) }}"
                class="block bg-white rounded-lg shadow-lg p-6 border-l-4 border-amber-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <blockquote class="text-lg text-gray-700 italic mb-4 line-clamp-3">
+                <blockquote class="text-lg text-isha-brown italic mb-4 line-clamp-3">
                     "{{ $relatedQuote->text }}"
                 </blockquote>
-                <p class="text-amber-900 font-semibold">— {{ $relatedQuote->author }}</p>
+                <p class="text-isha-brown-dark font-semibold">— {{ $relatedQuote->author }}</p>
             </a>
             @endforeach
         </div>
 
         <div class="text-center mt-8">
             <a href="{{ route('quotes.index') }}"
-               class="inline-block px-6 py-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition font-semibold">
+               class="inline-block px-6 py-3 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition font-semibold">
                 View All Quotes
             </a>
         </div>
@@ -120,7 +120,7 @@
 @endif
 
 <!-- Call to Action -->
-<section class="py-16 bg-gradient-to-r from-green-700 to-emerald-700 text-white">
+<section class="py-16 bg-isha-brown-dark text-white">
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold mb-4">Deepen Your Practice</h2>
         <p class="text-xl mb-8 max-w-2xl mx-auto">

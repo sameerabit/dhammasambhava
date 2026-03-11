@@ -4,9 +4,9 @@
 
 @section('content')
 <!-- Hero Header -->
-<section class="bg-gradient-to-r from-amber-100 to-orange-100 py-16">
+<section class="bg-isha-cream py-16">
     <div class="container mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-bold text-amber-900 mb-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-isha-brown-dark mb-4 text-center">
             Video Teachings
         </h1>
         <p class="text-xl text-gray-700 text-center max-w-2xl mx-auto">
@@ -24,7 +24,7 @@
                 Photos
             </a>
             <a href="{{ route('gallery.teachings') }}"
-               class="px-6 py-2 rounded-full bg-amber-600 text-white transition">
+               class="px-6 py-2 rounded-full bg-isha-orange text-white transition">
                 Video Teachings
             </a>
         </div>
@@ -38,7 +38,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($mediaItems as $media)
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-amber-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden border-t-4 border-isha-orange hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                     <!-- Video Thumbnail -->
                     <div class="relative aspect-video bg-gray-900">
                         @if($media->youtube_url)
@@ -107,13 +107,13 @@
                         <!-- Category Badge -->
                         @if($media->category)
                         <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase mb-3
-                            {{ $media->category === 'dhamma' ? 'bg-blue-100 text-blue-800' : ($media->category === 'yoga' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800') }}">
+                            {{ $media->category === 'dhamma' ? 'bg-blue-100 text-blue-800' : ($media->category === 'yoga' ? 'bg-green-100 text-green-800' : 'bg-isha-cream-dark text-amber-800') }}">
                             {{ ucfirst($media->category) }}
                         </span>
                         @endif
 
                         <!-- Title -->
-                        <h3 class="text-xl font-bold text-gray-800 mb-3 line-clamp-2">
+                        <h3 class="text-xl font-bold text-isha-brown-dark mb-3 line-clamp-2">
                             {{ $media->title }}
                         </h3>
 
@@ -128,7 +128,7 @@
                         <div class="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-200">
                             @if($media->duration)
                             <div class="flex items-center">
-                                <svg class="w-4 h-4 mr-1 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-4 h-4 mr-1 text-isha-orange" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                                 </svg>
                                 {{ $media->duration }} min
@@ -138,7 +138,7 @@
                             @if($media->youtube_url)
                             <a href="{{ $media->youtube_url }}"
                                target="_blank"
-                               class="text-amber-600 hover:text-amber-800 font-semibold flex items-center">
+                               class="text-isha-orange hover:text-amber-800 font-semibold flex items-center">
                                 Watch on YouTube
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -174,7 +174,7 @@
 <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold text-amber-900 mb-6 text-center">Teaching Categories</h2>
+            <h2 class="text-2xl font-bold text-isha-brown-dark mb-6 text-center">Teaching Categories</h2>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-white rounded-lg p-6 text-center shadow-md">
                     <div class="text-4xl mb-3">🧘</div>
@@ -197,7 +197,7 @@
 </section>
 
 <!-- Call to Action -->
-<section class="py-16 bg-gradient-to-r from-green-700 to-emerald-700 text-white">
+<section class="py-16 bg-isha-brown-dark text-white">
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold mb-4">Join Us In Person</h2>
         <p class="text-xl mb-8 max-w-2xl mx-auto">
@@ -205,12 +205,12 @@
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="{{ route('sessions.index') }}"
-               class="inline-block px-8 py-4 bg-white text-green-700 rounded-lg hover:bg-gray-100 transition text-lg font-semibold shadow-lg">
+               class="inline-block px-8 py-4 bg-white text-green-700 rounded-lg hover:bg-gray-100 transition text-lg font-semibold shadow-sm">
                 Book a Live Session
             </a>
             <a href="https://wa.me/1234567890?text=I'm interested in learning more about your teachings"
                target="_blank"
-               class="inline-block px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-800 transition text-lg font-semibold shadow-lg border-2 border-white">
+               class="inline-block px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-800 transition text-lg font-semibold shadow-sm border-2 border-white">
                 Contact Us on WhatsApp
             </a>
         </div>

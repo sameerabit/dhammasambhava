@@ -9,34 +9,18 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
         body {
-            font-family: 'Noto Serif', serif;
-            background: linear-gradient(135deg, #f5e6d3 0%, #ebe0d0 100%);
+            font-family: 'Merriweather', serif;
+            background: #f5f1e9;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cinzel', serif;
-        }
-
-        .manuscript-border {
-            border-image: repeating-linear-gradient(
-                45deg,
-                #c9a961,
-                #c9a961 10px,
-                transparent 10px,
-                transparent 20px
-            ) 1;
-        }
-
-        .palm-leaf-bg {
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(201, 169, 97, 0.1) 0%, transparent 50%);
+            font-family: 'Inter', sans-serif;
         }
 
         .whatsapp-float {
@@ -50,13 +34,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
             z-index: 50;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
     </style>
 
@@ -64,30 +49,30 @@
 </head>
 <body class="min-h-screen text-gray-800">
     <!-- Navigation -->
-    <nav class="bg-gradient-to-r from-amber-50 to-orange-50 border-b-4 border-amber-600 shadow-lg sticky top-0 z-40">
-        <div class="container mx-auto px-4 py-4">
+    <nav class="bg-white border-b border-isha-cream-dark shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-5">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <a href="{{ route('home') }}" class="flex items-center space-x-2">
+                <a href="{{ route('home') }}" class="flex items-center space-x-3">
                     <div class="text-3xl">☸️</div>
                     <div>
-                        <h1 class="text-2xl md:text-3xl font-bold text-amber-900">Dhamma Sambhava</h1>
-                        <p class="text-xs text-amber-700 hidden md:block">Path to Peace & Wisdom</p>
+                        <h1 class="text-2xl md:text-3xl font-bold text-isha-brown-dark">Dhamma Sambhava</h1>
+                        <p class="text-xs text-isha-brown hidden md:block font-sans">Path to Peace & Wisdom</p>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-6">
-                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-amber-700 font-semibold transition">Home</a>
-                    <a href="{{ route('quotes.index') }}" class="text-gray-700 hover:text-amber-700 font-semibold transition">Quotes</a>
-                    <a href="{{ route('sessions.index') }}" class="text-gray-700 hover:text-amber-700 font-semibold transition">Sessions</a>
-                    <a href="{{ route('gallery.teachings') }}" class="text-gray-700 hover:text-amber-700 font-semibold transition">Teachings</a>
-                    <a href="{{ route('gallery.index') }}" class="text-gray-700 hover:text-amber-700 font-semibold transition">Gallery</a>
-                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-amber-700 font-semibold transition">About</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="{{ route('home') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Home</a>
+                    <a href="{{ route('quotes.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Quotes</a>
+                    <a href="{{ route('sessions.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Sessions</a>
+                    <a href="{{ route('gallery.teachings') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Teachings</a>
+                    <a href="{{ route('gallery.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Gallery</a>
+                    <a href="{{ route('about') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">About</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                <button id="mobile-menu-btn" class="md:hidden text-isha-brown">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -95,13 +80,13 @@
             </div>
 
             <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-                <a href="{{ route('home') }}" class="block py-2 text-gray-700 hover:text-amber-700">Home</a>
-                <a href="{{ route('quotes.index') }}" class="block py-2 text-gray-700 hover:text-amber-700">Quotes</a>
-                <a href="{{ route('sessions.index') }}" class="block py-2 text-gray-700 hover:text-amber-700">Sessions</a>
-                <a href="{{ route('gallery.teachings') }}" class="block py-2 text-gray-700 hover:text-amber-700">Teachings</a>
-                <a href="{{ route('gallery.index') }}" class="block py-2 text-gray-700 hover:text-amber-700">Gallery</a>
-                <a href="{{ route('about') }}" class="block py-2 text-gray-700 hover:text-amber-700">About</a>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 pb-4">
+                <a href="{{ route('home') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Home</a>
+                <a href="{{ route('quotes.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Quotes</a>
+                <a href="{{ route('sessions.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Sessions</a>
+                <a href="{{ route('gallery.teachings') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Teachings</a>
+                <a href="{{ route('gallery.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Gallery</a>
+                <a href="{{ route('about') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">About</a>
             </div>
         </div>
     </nav>
@@ -112,31 +97,31 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300 mt-16">
-        <div class="container mx-auto px-4 py-12">
-            <div class="grid md:grid-cols-3 gap-8">
+    <footer class="bg-isha-brown-dark text-isha-cream mt-20">
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-3 gap-12">
                 <div>
-                    <h3 class="text-xl font-bold text-amber-400 mb-4">Dhamma Sambhava</h3>
-                    <p class="text-sm">A sanctuary for spiritual growth through Dhamma teachings and Yoga practice.</p>
+                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Dhamma Sambhava</h3>
+                    <p class="text-sm leading-relaxed">A sanctuary for spiritual growth through Dhamma teachings and Yoga practice.</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-amber-400 mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="{{ route('sessions.index') }}" class="hover:text-amber-400">Book a Session</a></li>
-                        <li><a href="{{ route('quotes.index') }}" class="hover:text-amber-400">Daily Quotes</a></li>
-                        <li><a href="{{ route('gallery.teachings') }}" class="hover:text-amber-400">Video Teachings</a></li>
-                        <li><a href="{{ route('about') }}" class="hover:text-amber-400">About Us</a></li>
+                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Quick Links</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="{{ route('sessions.index') }}" class="hover:text-isha-orange transition-colors">Book a Session</a></li>
+                        <li><a href="{{ route('quotes.index') }}" class="hover:text-isha-orange transition-colors">Daily Quotes</a></li>
+                        <li><a href="{{ route('gallery.teachings') }}" class="hover:text-isha-orange transition-colors">Video Teachings</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-isha-orange transition-colors">About Us</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-amber-400 mb-4">Connect</h3>
-                    <p class="text-sm mb-2">Join us on our journey to peace and enlightenment.</p>
-                    <a href="https://wa.me/1234567890" class="inline-block px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition text-sm">
+                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Connect</h3>
+                    <p class="text-sm mb-4 leading-relaxed">Join us on our journey to peace and enlightenment.</p>
+                    <a href="https://wa.me/1234567890" class="inline-block px-6 py-3 bg-isha-orange text-white rounded hover:bg-isha-navy transition-colors text-sm font-sans font-medium">
                         Contact via WhatsApp
                     </a>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
+            <div class="border-t border-isha-brown mt-12 pt-8 text-center text-sm">
                 <p>&copy; {{ date('Y') }} Dhamma Sambhava. All rights reserved.</p>
             </div>
         </div>

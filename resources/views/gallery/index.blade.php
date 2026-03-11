@@ -4,9 +4,9 @@
 
 @section('content')
 <!-- Hero Header -->
-<section class="bg-gradient-to-r from-amber-100 to-orange-100 py-16">
+<section class="bg-isha-cream py-16">
     <div class="container mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-bold text-amber-900 mb-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-isha-brown-dark mb-4 text-center">
             Photo Gallery
         </h1>
         <p class="text-xl text-gray-700 text-center max-w-2xl mx-auto">
@@ -20,7 +20,7 @@
     <div class="container mx-auto px-4 py-4">
         <div class="flex flex-wrap justify-center gap-4">
             <a href="{{ route('gallery.index') }}"
-               class="px-6 py-2 rounded-full bg-amber-600 text-white transition">
+               class="px-6 py-2 rounded-full bg-isha-orange text-white transition">
                 Photos
             </a>
             <a href="{{ route('gallery.teachings') }}"
@@ -60,7 +60,7 @@
                     <p class="text-white/90 text-sm line-clamp-2">{{ $media->description }}</p>
                     @endif
                     @if($media->category)
-                    <span class="inline-block mt-2 px-2 py-1 bg-amber-600 text-white rounded text-xs font-semibold self-start">
+                    <span class="inline-block mt-2 px-2 py-1 bg-isha-orange text-white rounded text-xs font-semibold self-start">
                         {{ ucfirst($media->category) }}
                     </span>
                     @endif
@@ -88,7 +88,7 @@
 </section>
 
 <!-- Call to Action -->
-<section class="py-16 bg-gradient-to-r from-amber-600 to-orange-600 text-white">
+<section class="py-16 bg-isha-brown-dark text-white">
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold mb-4">Experience It Yourself</h2>
         <p class="text-xl mb-8 max-w-2xl mx-auto">
@@ -96,7 +96,7 @@
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="{{ route('sessions.index') }}"
-               class="inline-block px-8 py-4 bg-white text-amber-600 rounded-lg hover:bg-gray-100 transition text-lg font-semibold shadow-lg">
+               class="inline-block px-8 py-4 bg-white text-isha-orange rounded-lg hover:bg-gray-100 transition text-lg font-semibold shadow-lg">
                 Browse Sessions
             </a>
             <a href="{{ route('gallery.teachings') }}"
