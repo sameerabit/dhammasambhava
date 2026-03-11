@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description', 'Dhamma Sambhava - A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')">
-    <title>@yield('title', 'Dhamma Sambhava - Dhamma & Yoga Center')</title>
+    <meta name="description" content="@yield('meta_description', 'Dhammasambhava - A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')">
+    <title>@yield('title', 'Dhammasambhava - Dhamma & Yoga Center')</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +56,7 @@
                 <a href="{{ route('home') }}" class="flex items-center space-x-3">
                     <div class="text-3xl">☸️</div>
                     <div>
-                        <h1 class="text-2xl md:text-3xl font-bold text-isha-brown-dark">Dhamma Sambhava</h1>
+                        <h1 class="text-2xl md:text-3xl font-bold text-isha-brown-dark">Dhammasambhava</h1>
                         <p class="text-xs text-isha-brown hidden md:block font-sans">Path to Peace & Wisdom</p>
                     </div>
                 </a>
@@ -101,7 +101,7 @@
         <div class="container mx-auto px-4 py-16">
             <div class="grid md:grid-cols-3 gap-12">
                 <div>
-                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Dhamma Sambhava</h3>
+                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Dhammasambhava</h3>
                     <p class="text-sm leading-relaxed">A sanctuary for spiritual growth through Dhamma teachings and Yoga practice.</p>
                 </div>
                 <div>
@@ -122,7 +122,7 @@
                 </div>
             </div>
             <div class="border-t border-isha-brown mt-12 pt-8 text-center text-sm">
-                <p>&copy; {{ date('Y') }} Dhamma Sambhava. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} Dhammasambhava. All rights reserved.</p>
             </div>
         </div>
     </footer>

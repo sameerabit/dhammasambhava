@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dhamma Sambhava - Path to Peace & Wisdom')
+@section('title', 'Dhammasambhava - Path to Peace & Wisdom')
 
 @section('content')
 <!-- Hero Section with Background Image -->
@@ -17,7 +17,7 @@
     <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-4xl mx-auto text-center text-white">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                Welcome to Dhamma Sambhava
+                Welcome to Dhammasambhava
             </h1>
             <p class="text-xl md:text-2xl mb-12 font-light text-isha-cream-light">
                 A Sanctuary for Spiritual Growth & Inner Peace

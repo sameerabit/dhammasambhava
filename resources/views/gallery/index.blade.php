@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Photo Gallery - Dhamma Sambhava')
+@section('title', 'Photo Gallery - Dhammasambhava')
 
 @section('content')
 <!-- Hero Header -->
@@ -10,7 +10,7 @@
             Photo Gallery
         </h1>
         <p class="text-xl text-gray-700 text-center max-w-2xl mx-auto">
-            Moments of peace, practice, and community at Dhamma Sambhava
+            Moments of peace, practice, and community at Dhammasambhava
         </p>
     </div>
 </section>

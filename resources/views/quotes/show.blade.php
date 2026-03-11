@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', substr($quote->text, 0, 60) . '... - Dhamma Sambhava')
+@section('title', substr($quote->text, 0, 60) . '... - Dhammasambhava')
 
 @section('content')
 <!-- Quote Hero -->
@@ -58,7 +58,7 @@
                     </svg>
                     Share This Quote
                 </button>
-                <a href="https://wa.me/?text={{ urlencode('"' . $quote->text . '" — ' . $quote->author . ' | Dhamma Sambhava: ' . route('quotes.show', $quote)) }}"
+                <a href="https://wa.me/?text={{ urlencode('"' . $quote->text . '" — ' . $quote->author . ' | Dhammasambhava: ' . route('quotes.show', $quote)) }}"
                    target="_blank"
                    class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold flex items-center">
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -139,7 +139,7 @@ function shareQuote() {
     const quoteText = @json($quote->text);
     const author = @json($quote->author);
     const url = window.location.href;
-    const shareText = `"${quoteText}" — ${author}\n\nVia Dhamma Sambhava: ${url}`;
+    const shareText = `"${quoteText}" — ${author}\n\nVia Dhammasambhava: ${url}`;
 
     if (navigator.share) {
         navigator.share({

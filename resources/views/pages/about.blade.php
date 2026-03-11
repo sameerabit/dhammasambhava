@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - Dhamma Sambhava')
+@section('title', 'About Us - Dhammasambhava')
 
 @section('content')
 <!-- Hero Section -->
@@ -8,7 +8,7 @@
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-4xl md:text-6xl font-bold text-isha-brown-dark mb-6">
-                About Dhamma Sambhava
+                About Dhammasambhava
             </h1>
             <p class="text-xl md:text-2xl text-isha-brown font-light">
                 A sanctuary for spiritual growth, inner peace, and awakening
@@ -27,7 +27,7 @@
                 <div class="order-2 md:order-1">
                     <div class="prose prose-lg max-w-none text-isha-brown leading-relaxed space-y-6">
                         <p>
-                            Dhamma Sambhava, which means "The Arising of Truth," was founded with a simple yet profound mission:
+                            Dhammasambhava, which means "The Arising of Truth," was founded with a simple yet profound mission:
                             to create a space where individuals can explore the timeless teachings of the Buddha and
                             the transformative practices of yoga in a supportive, nurturing environment.
                         </p>
@@ -47,7 +47,7 @@
                 <div class="order-1 md:order-2">
                     <div class="rounded-lg overflow-hidden shadow-lg">
                         <img src="{{ asset('images/472043777_1144632437668844_7167016747436132148_n.jpg') }}"
-                             alt="Dhamma Sambhava Community"
+                             alt="Dhammasambhava Community"
                              class="w-full h-auto object-cover">
                     </div>
                 </div>
@@ -251,7 +251,7 @@
                class="inline-block px-8 py-4 bg-white text-isha-orange rounded-lg hover:bg-gray-100 transition text-lg font-semibold shadow-lg">
                 Browse Our Sessions
             </a>
-            <a href="https://wa.me/1234567890?text=I'd like to learn more about Dhamma Sambhava"
+            <a href="https://wa.me/1234567890?text=I'd like to learn more about Dhammasambhava"
                target="_blank"
                class="inline-block px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-lg font-semibold shadow-lg">
                 Contact Us on WhatsApp

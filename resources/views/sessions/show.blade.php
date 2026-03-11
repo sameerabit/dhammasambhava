@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $session->title . ' - Dhamma Sambhava')
+@section('title', $session->title . ' - Dhammasambhava')
 
 @section('content')
 <!-- Session Hero -->

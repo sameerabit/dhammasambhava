@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Browse Sessions - Dhamma Sambhava')
+@section('title', 'Browse Sessions - Dhammasambhava')
 
 @section('content')
 <!-- Hero Header -->

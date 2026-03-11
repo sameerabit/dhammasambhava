@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Book ' . $session->title . ' - Dhamma Sambhava')
+@section('title', 'Book ' . $session->title . ' - Dhammasambhava')
 
 @section('content')
 <!-- Booking Header -->

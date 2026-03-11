@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Booking Confirmed - Dhamma Sambhava')
+@section('title', 'Booking Confirmed - Dhammasambhava')
 
 @section('content')
 <!-- Success Hero -->

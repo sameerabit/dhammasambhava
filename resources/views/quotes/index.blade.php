@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Wisdom Quotes - Dhamma Sambhava')
+@section('title', 'Wisdom Quotes - Dhammasambhava')
 
 @section('content')
 <!-- Hero Header -->
