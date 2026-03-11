@@ -1,0 +1,72 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Hetzner
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa_personal
+          chmod 600 ~/.ssh/id_rsa_personal
+          ssh-keyscan -H 46.62.138.177 >> ~/.ssh/known_hosts
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Ansible
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible
+
+      - name: Create Ansible vault password file
+        run: |
+          echo "${{ secrets.ANSIBLE_VAULT_PASSWORD }}" > ~/.vault_pass
+          chmod 600 ~/.vault_pass
+
+      - name: Test SSH connection
+        run: |
+          ssh -i ~/.ssh/id_rsa_personal -o StrictHostKeyChecking=no root@46.62.138.177 'echo "SSH connection successful"'
+
+      - name: Run Ansible deployment
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: False
+          APP_KEY: ${{ secrets.APP_KEY }}
+        run: |
+          cd ansible
+          ansible-playbook deploy.yml \
+            -i inventory.yml \
+            -e "app_key=${{ secrets.APP_KEY }}" \
+            -e "git_branch=${{ github.ref_name }}" \
+            --vault-password-file ~/.vault_pass
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -f ~/.ssh/id_rsa_personal
+          rm -f ~/.vault_pass
+
+      - name: Deployment notification
+        if: success()
+        run: |
+          echo "✅ Deployment completed successfully!"
+          echo "🚀 Application deployed to: http://46.62.138.177"
+
+      - name: Deployment failure notification
+        if: failure()
+        run: |
+          echo "❌ Deployment failed!"
+          echo "Please check the logs above for details."

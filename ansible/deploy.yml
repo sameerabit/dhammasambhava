@@ -1,0 +1,230 @@
+---
+- name: Deploy Dhammasambhava Laravel Application
+  hosts: production
+  become: yes
+  vars:
+    release_path: "{{ app_path }}/releases/{{ ansible_date_time.epoch }}"
+    shared_path: "{{ app_path }}/shared"
+    current_path: "{{ app_path }}/current"
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      tags: [setup]
+
+    - name: Install required system packages
+      apt:
+        name:
+          - nginx
+          - php{{ php_version }}-fpm
+          - php{{ php_version }}-cli
+          - php{{ php_version }}-mbstring
+          - php{{ php_version }}-xml
+          - php{{ php_version }}-curl
+          - php{{ php_version }}-zip
+          - php{{ php_version }}-sqlite3
+          - php{{ php_version }}-gd
+          - php{{ php_version }}-intl
+          - php{{ php_version }}-bcmath
+          - git
+          - curl
+          - unzip
+          - supervisor
+          - nodejs
+          - npm
+        state: present
+      tags: [setup]
+
+    - name: Install Composer
+      shell: |
+        curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      args:
+        creates: /usr/local/bin/composer
+      tags: [setup]
+
+    - name: Create application directory structure
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: '0755'
+      loop:
+        - "{{ app_path }}"
+        - "{{ app_path }}/releases"
+        - "{{ shared_path }}"
+        - "{{ shared_path }}/storage"
+        - "{{ shared_path }}/storage/app"
+        - "{{ shared_path }}/storage/app/public"
+        - "{{ shared_path }}/storage/framework"
+        - "{{ shared_path }}/storage/framework/cache"
+        - "{{ shared_path }}/storage/framework/sessions"
+        - "{{ shared_path }}/storage/framework/views"
+        - "{{ shared_path }}/storage/logs"
+        - "{{ shared_path }}/database"
+      tags: [setup, deploy]
+
+    - name: Create SQLite database file if it doesn't exist
+      file:
+        path: "{{ shared_path }}/database/database.sqlite"
+        state: touch
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: '0664'
+      tags: [setup]
+
+    - name: Create release directory
+      file:
+        path: "{{ release_path }}"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: '0755'
+      tags: [deploy]
+
+    - name: Clone repository to release directory
+      git:
+        repo: "https://github.com/{{ lookup('env', 'GITHUB_REPOSITORY') | default('yourusername/dhammasambhava', true) }}.git"
+        dest: "{{ release_path }}"
+        version: "{{ git_branch | default('main') }}"
+        force: yes
+      become_user: "{{ app_user }}"
+      tags: [deploy]
+
+    - name: Copy .env file to release
+      template:
+        src: .env.production.j2
+        dest: "{{ release_path }}/.env"
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: '0644'
+      tags: [deploy]
+
+    - name: Install Composer dependencies
+      composer:
+        command: install
+        working_dir: "{{ release_path }}"
+        no_dev: yes
+        optimize_autoloader: yes
+      become_user: "{{ app_user }}"
+      tags: [deploy]
+
+    - name: Install NPM dependencies
+      npm:
+        path: "{{ release_path }}"
+        state: present
+        production: yes
+      become_user: "{{ app_user }}"
+      tags: [deploy]
+
+    - name: Build frontend assets
+      shell: npm run build
+      args:
+        chdir: "{{ release_path }}"
+      become_user: "{{ app_user }}"
+      tags: [deploy]
+
+    - name: Create symlinks to shared directories
+      file:
+        src: "{{ shared_path }}/{{ item }}"
+        dest: "{{ release_path }}/{{ item }}"
+        state: link
+        force: yes
+      loop:
+        - storage
+        - database
+      tags: [deploy]
+
+    - name: Run database migrations
+      shell: php artisan migrate --force
+      args:
+        chdir: "{{ release_path }}"
+      become_user: "{{ app_user }}"
+      tags: [deploy]
+
+    - name: Optimize Laravel
+      shell: |
+        php artisan config:cache
+        php artisan route:cache
+        php artisan view:cache
+      args:
+        chdir: "{{ release_path }}"
+      become_user: "{{ app_user }}"
+      tags: [deploy]
+
+    - name: Update current symlink
+      file:
+        src: "{{ release_path }}"
+        dest: "{{ current_path }}"
+        state: link
+        force: yes
+      tags: [deploy]
+
+    - name: Set permissions
+      file:
+        path: "{{ item }}"
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: '0775'
+        recurse: yes
+      loop:
+        - "{{ shared_path }}/storage"
+        - "{{ release_path }}/bootstrap/cache"
+      tags: [deploy]
+
+    - name: Configure Nginx
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/sites-available/{{ app_name }}
+        owner: root
+        group: root
+        mode: '0644'
+      tags: [setup, config]
+
+    - name: Enable Nginx site
+      file:
+        src: /etc/nginx/sites-available/{{ app_name }}
+        dest: /etc/nginx/sites-enabled/{{ app_name }}
+        state: link
+      tags: [setup, config]
+
+    - name: Remove default Nginx site
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      tags: [setup, config]
+
+    - name: Test Nginx configuration
+      command: nginx -t
+      tags: [setup, config, deploy]
+
+    - name: Reload Nginx
+      systemd:
+        name: nginx
+        state: reloaded
+        enabled: yes
+      tags: [setup, config, deploy]
+
+    - name: Reload PHP-FPM
+      systemd:
+        name: php{{ php_version }}-fpm
+        state: reloaded
+        enabled: yes
+      tags: [deploy]
+
+    - name: Clean up old releases (keep last 5)
+      shell: |
+        cd {{ app_path }}/releases
+        ls -t | tail -n +6 | xargs -r rm -rf
+      tags: [deploy, cleanup]
+
+    - name: Display deployment information
+      debug:
+        msg:
+          - "Deployment completed successfully!"
+          - "Release: {{ release_path }}"
+          - "Current: {{ current_path }}"
+          - "Application URL: http://{{ app_domain }}"
+      tags: [deploy]

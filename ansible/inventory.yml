@@ -1,0 +1,25 @@
+all:
+  hosts:
+    production:
+      ansible_host: 46.62.138.177
+      ansible_user: root
+      ansible_ssh_private_key_file: ~/.ssh/id_rsa_personal
+      ansible_python_interpreter: /usr/bin/python3
+
+      # Application settings
+      app_name: dhammasambhava
+      app_domain: dhammasambhava.com  # Change to your actual domain
+      app_path: /var/www/dhammasambhava
+      app_user: www-data
+      app_group: www-data
+
+      # PHP settings
+      php_version: "8.4"
+
+      # Database settings
+      db_connection: sqlite
+      db_path: "{{ app_path }}/database/database.sqlite"
+
+      # Environment
+      app_env: production
+      app_debug: false
