@@ -20,25 +20,36 @@
 <!-- Our Story -->
 <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-6 text-center">Our Story</h2>
-                <div class="prose prose-lg max-w-none text-isha-brown leading-relaxed space-y-6">
-                    <p>
-                        Dhamma Sambhava, which means "The Arising of Truth," was founded with a simple yet profound mission:
-                        to create a space where individuals can explore the timeless teachings of the Buddha and
-                        the transformative practices of yoga in a supportive, nurturing environment.
-                    </p>
-                    <p>
-                        In our fast-paced modern world, the need for inner peace and spiritual understanding has never been
-                        greater. We believe that the ancient wisdom traditions offer profound tools for navigating life's
-                        challenges with grace, compassion, and wisdom.
-                    </p>
-                    <p>
-                        Our center brings together experienced teachers, dedicated practitioners, and seekers from all
-                        walks of life who share a common intention: to awaken to their true nature and live with greater
-                        awareness, kindness, and freedom.
-                    </p>
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-12 text-center">Our Story</h2>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+                <div class="order-2 md:order-1">
+                    <div class="prose prose-lg max-w-none text-isha-brown leading-relaxed space-y-6">
+                        <p>
+                            Dhamma Sambhava, which means "The Arising of Truth," was founded with a simple yet profound mission:
+                            to create a space where individuals can explore the timeless teachings of the Buddha and
+                            the transformative practices of yoga in a supportive, nurturing environment.
+                        </p>
+                        <p>
+                            In our fast-paced modern world, the need for inner peace and spiritual understanding has never been
+                            greater. We believe that the ancient wisdom traditions offer profound tools for navigating life's
+                            challenges with grace, compassion, and wisdom.
+                        </p>
+                        <p>
+                            Our center brings together experienced teachers, dedicated practitioners, and seekers from all
+                            walks of life who share a common intention: to awaken to their true nature and live with greater
+                            awareness, kindness, and freedom.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="order-1 md:order-2">
+                    <div class="rounded-lg overflow-hidden shadow-lg">
+                        <img src="{{ asset('images/472043777_1144632437668844_7167016747436132148_n.jpg') }}"
+                             alt="Dhamma Sambhava Community"
+                             class="w-full h-auto object-cover">
+                    </div>
                 </div>
             </div>
         </div>

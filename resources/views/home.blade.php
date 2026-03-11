@@ -3,39 +3,59 @@
 @section('title', 'Dhamma Sambhava - Path to Peace & Wisdom')
 
 @section('content')
-<!-- Hero Section with Quote of the Day -->
-<section class="relative bg-isha-cream py-24 md:py-40">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold text-isha-brown-dark mb-6">
+<!-- Hero Section with Background Image -->
+<section class="relative bg-gray-900 py-32 md:py-48 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="{{ asset('images/46501515_1960277164065269_1149918729761456128_n.jpg') }}"
+             alt="Meditation and Peace"
+             class="w-full h-full object-cover opacity-40">
+        <div class="absolute inset-0 bg-gradient-to-b from-isha-brown-dark/60 to-isha-brown-dark/80"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
                 Welcome to Dhamma Sambhava
             </h1>
-            <p class="text-xl md:text-2xl text-isha-brown mb-16 font-light">
+            <p class="text-xl md:text-2xl mb-12 font-light text-isha-cream-light">
                 A Sanctuary for Spiritual Growth & Inner Peace
             </p>
 
-            @if($quoteOfTheDay)
-            <!-- Quote of the Day -->
-            <div class="bg-white rounded-lg p-10 md:p-16 shadow-sm">
-                <p class="text-sm uppercase tracking-widest text-isha-orange mb-6">Quote of the Day</p>
-                <blockquote class="text-2xl md:text-3xl italic text-isha-brown-dark mb-8 leading-relaxed font-serif">
-                    "{{ $quoteOfTheDay->text }}"
-                </blockquote>
-                <p class="text-lg text-isha-brown-dark font-semibold">— {{ $quoteOfTheDay->author }}</p>
-            </div>
-            @endif
-
-            <div class="mt-16 flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="{{ route('sessions.index') }}" class="px-8 py-4 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition text-lg font-semibold shadow-sm">
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="{{ route('sessions.index') }}" class="px-8 py-4 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition text-lg font-semibold shadow-lg">
                     Browse Sessions
                 </a>
-                <a href="{{ route('quotes.index') }}" class="px-8 py-4 bg-isha-brown text-white rounded-lg hover:bg-isha-brown-dark transition text-lg font-semibold shadow-sm">
-                    More Quotes
+                <a href="{{ route('quotes.index') }}" class="px-8 py-4 bg-white text-isha-brown-dark rounded-lg hover:bg-isha-cream transition text-lg font-semibold shadow-lg">
+                    Explore Wisdom
                 </a>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Quote of the Day Section -->
+@if($quoteOfTheDay)
+<section class="py-20 bg-isha-cream">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg p-10 md:p-16 shadow-sm">
+                <p class="text-sm uppercase tracking-widest text-isha-orange mb-6 text-center">Quote of the Day</p>
+                <blockquote class="text-2xl md:text-3xl italic text-isha-brown-dark mb-8 leading-relaxed font-serif text-center">
+                    "{{ $quoteOfTheDay->text }}"
+                </blockquote>
+                <p class="text-lg text-isha-brown-dark font-semibold text-center">— {{ $quoteOfTheDay->author }}</p>
+                <div class="mt-8 text-center">
+                    <a href="{{ route('quotes.show', $quoteOfTheDay) }}" class="inline-block px-6 py-3 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition font-semibold">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
 <!-- About Section -->
 <section class="py-20 bg-white">
@@ -115,6 +135,44 @@
     </div>
 </section>
 @endif
+
+<!-- Wisdom Gallery -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-4 text-center">Words of Wisdom</h2>
+        <p class="text-center text-isha-brown mb-12 max-w-2xl mx-auto">
+            Timeless teachings to inspire and guide your spiritual journey
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            @php
+            $quoteImages = [
+                'quotes/504379733_1313500207448732_1488199036778016310_n.jpg',
+                'quotes/517143990_1311787730953313_3213854276871139559_n.jpg',
+                'quotes/520724727_1324482903017129_5864715493622473452_n.jpg',
+                'quotes/526317849_1330636219068464_5423863308206625618_n.jpg',
+                'quotes/529710680_1344001687731917_5262041184879371982_n.jpg',
+                'quotes/529760974_1338729494925803_536497021397670558_n.jpg',
+            ];
+            @endphp
+
+            @foreach(array_slice($quoteImages, 0, 6) as $image)
+            <a href="{{ route('quotes.index') }}" class="group relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                <img src="{{ asset('images/' . $image) }}"
+                     alt="Wisdom Quote"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-isha-brown-dark/80 via-isha-brown-dark/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+            </a>
+            @endforeach
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="{{ route('quotes.index') }}" class="inline-block px-8 py-4 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition text-lg font-semibold">
+                View All Quotes →
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- Call to Action -->
 <section class="py-24 bg-isha-brown-dark text-white">
