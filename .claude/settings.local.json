@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd comprehensive Software Requirements Specification\n\n- Added sections 7-12: Database Schema, Testing, Backup, API, Monitoring, Privacy\n- Expanded functional requirements with detailed booking system specs\n- Added 8 detailed use cases with flows and postconditions\n- Added accessibility requirements \\(WCAG 2.1 Level AA\\)\n- Fixed technology version inconsistencies \\(Laravel 11.x, PHP 8.2+\\)\n- Enhanced deployment requirements with server specs and hosting options\n- Improved GitHub Actions workflow with detailed CI/CD steps\n- Added comprehensive database schema with all tables, columns, and relationships\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)",
+      "Bash(php:*)",
+      "Bash(composer:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm install)",
+      "Bash(npm run build:*)"
+    ]
+  }
+}
