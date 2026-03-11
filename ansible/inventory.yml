@@ -8,13 +8,13 @@ all:
 
       # Application settings
       app_name: dhammasambhava
-      app_domain: dhammasambhava.com  # Change to your actual domain
+      app_domain: dhammasambhava.org  # Change to your actual domain
       app_path: /var/www/dhammasambhava
       app_user: www-data
       app_group: www-data
 
       # PHP settings
-      php_version: "8.4"
+      php_version: "8.3"
 
       # Database settings
       db_connection: sqlite

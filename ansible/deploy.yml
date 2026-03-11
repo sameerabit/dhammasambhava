@@ -14,7 +14,7 @@
         cache_valid_time: 3600
       tags: [setup]
 
-    - name: Install required system packages
+    - name: Install required system packages (without Node.js)
       apt:
         name:
           - nginx
@@ -32,9 +32,23 @@
           - curl
           - unzip
           - supervisor
-          - nodejs
-          - npm
+          - ca-certificates
+          - gnupg
         state: present
+      tags: [setup]
+
+    - name: Check if Node.js is installed
+      command: node --version
+      register: node_installed
+      ignore_errors: yes
+      changed_when: false
+      tags: [setup]
+
+    - name: Install Node.js 20.x from NodeSource
+      shell: |
+        curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+        apt-get install -y nodejs
+      when: node_installed.rc != 0
       tags: [setup]
 
     - name: Install Composer
