@@ -9,23 +9,23 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $images = Media::published()
+        $mediaItems = Media::published()
             ->ofType('image')
             ->inCategory('gallery')
             ->ordered()
-            ->get();
+            ->paginate(12);
 
-        return view('gallery.index', compact('images'));
+        return view('gallery.index', compact('mediaItems'));
     }
 
     public function teachings()
     {
-        $videos = Media::published()
+        $mediaItems = Media::published()
             ->ofType('youtube')
             ->inCategory('teaching')
             ->ordered()
-            ->get();
+            ->paginate(9);
 
-        return view('gallery.teachings', compact('videos'));
+        return view('gallery.teachings', compact('mediaItems'));
     }
 }
