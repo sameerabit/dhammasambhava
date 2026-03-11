@@ -12,9 +12,16 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
+        $email = 'admin@dhammasambhava.org';
+
+        if (\App\Models\User::where('email', $email)->exists()) {
+            echo "Admin user already exists!\n";
+            return;
+        }
+
         \App\Models\User::create([
             'name' => 'Admin User',
-            'email' => 'admin@dhammasambhava.org',
+            'email' => $email,
             'password' => bcrypt('password'), // Change this after first login
             'role' => 'super_admin',
             'email_verified_at' => now(),
