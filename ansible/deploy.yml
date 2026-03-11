@@ -150,24 +150,26 @@
       become_user: "{{ app_user }}"
       tags: [deploy]
 
-    - name: Remove existing storage and database directories
+    - name: Remove existing storage directory
       file:
-        path: "{{ release_path }}/{{ item }}"
+        path: "{{ release_path }}/storage"
         state: absent
-      loop:
-        - storage
-        - database
       tags: [deploy]
 
-    - name: Create symlinks to shared directories
+    - name: Create symlink to shared storage
       file:
-        src: "{{ shared_path }}/{{ item }}"
-        dest: "{{ release_path }}/{{ item }}"
+        src: "{{ shared_path }}/storage"
+        dest: "{{ release_path }}/storage"
         state: link
         force: yes
-      loop:
-        - storage
-        - database
+      tags: [deploy]
+
+    - name: Create symlink to shared database file
+      file:
+        src: "{{ shared_path }}/database/database.sqlite"
+        dest: "{{ release_path }}/database/database.sqlite"
+        state: link
+        force: yes
       tags: [deploy]
 
     - name: Run database migrations
