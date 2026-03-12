@@ -116,7 +116,7 @@
                 <div>
                     <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Connect</h3>
                     <p class="text-sm mb-4 leading-relaxed">Join us on our journey to peace and enlightenment.</p>
-                    <a href="https://wa.me/1234567890" class="inline-block px-6 py-3 bg-isha-orange text-white rounded hover:bg-isha-navy transition-colors text-sm font-sans font-medium">
+                    <a href="https://wa.me/94777345344" class="inline-block px-6 py-3 bg-isha-orange text-white rounded hover:bg-isha-navy transition-colors text-sm font-sans font-medium">
                         Contact via WhatsApp
                     </a>
                 </div>
@@ -128,7 +128,7 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/1234567890?text=Hello%2C%20I%27m%20interested%20in%20learning%20more%20about%20your%20sessions"
+    <a href="https://wa.me/94777345344?text=Hello%2C%20I%27m%20interested%20in%20learning%20more%20about%20your%20sessions"
        target="_blank"
        class="whatsapp-float"
        title="Contact us on WhatsApp">
