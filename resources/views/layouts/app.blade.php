@@ -4,6 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="@yield('meta_description', 'Dhammasambhava - A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'Dhamma, Buddhism, meditation, yoga, spiritual growth, mindfulness, inner peace, Buddhist teachings, yoga classes, Sri Lanka')">
+    <meta name="author" content="Dhammasambhava">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('og_title', '@yield('title', 'Dhammasambhava - Path to Peace & Wisdom')')">
+    <meta property="og:description" content="@yield('og_description', '@yield('meta_description', 'A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')')">
+    <meta property="og:image" content="@yield('og_image', asset('images/46501515_1960277164065269_1149918729761456128_n.jpg'))">
+    <meta property="og:site_name" content="Dhammasambhava">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url()->current() }}">
+    <meta name="twitter:title" content="@yield('twitter_title', '@yield('title', 'Dhammasambhava - Path to Peace & Wisdom')')">
+    <meta name="twitter:description" content="@yield('twitter_description', '@yield('meta_description', 'A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')')">
+    <meta name="twitter:image" content="@yield('twitter_image', asset('images/46501515_1960277164065269_1149918729761456128_n.jpg'))">
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#7C3AED">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+
     <title>@yield('title', 'Dhammasambhava - Dhamma & Yoga Center')</title>
 
     <!-- Fonts -->
@@ -12,6 +37,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dhammasambhava",
+        "description": "A sanctuary for Dhamma teachings and Yoga practice",
+        "url": "{{ url('/') }}",
+        "logo": "{{ asset('images/46501515_1960277164065269_1149918729761456128_n.jpg') }}",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+94-777-345-344",
+            "contactType": "customer service",
+            "availableLanguage": ["en", "si"]
+        },
+        "sameAs": []
+    }
+    </script>
+
+    @stack('structured_data')
+
+    <!-- Google Analytics (configure GA_MEASUREMENT_ID in .env) -->
+    @if(config('services.google_analytics.measurement_id'))
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google_analytics.measurement_id') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ config('services.google_analytics.measurement_id') }}');
+    </script>
+    @endif
 
     <style>
         body {

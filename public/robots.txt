@@ -1,2 +1,17 @@
+# Robots.txt for Dhammasambhava
 User-agent: *
-Disallow:
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /livewire/
+
+# Allow search engines to crawl important pages
+Allow: /quotes
+Allow: /sessions
+Allow: /gallery
+Allow: /about
+Allow: /contact
+
+# Sitemap location
+Sitemap: https://dhammasambhava.org/sitemap.xml
