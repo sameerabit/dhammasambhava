@@ -223,7 +223,7 @@
                 <!-- Help Section -->
                 <div class="mt-10 pt-8 border-t border-isha-cream">
                     <p class="text-sm text-isha-brown mb-3">Need assistance with your booking?</p>
-                    <a href="https://wa.me/1234567890?text=I need help booking {{ urlencode($session->title) }}"
+                    <a href="https://wa.me/94777345344?text=I need help booking {{ urlencode($session->title) }}"
                        target="_blank"
                        class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">

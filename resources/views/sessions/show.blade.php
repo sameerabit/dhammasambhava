@@ -119,7 +119,7 @@
 
                         <div class="pt-6 border-t border-isha-cream">
                             <p class="text-sm text-isha-brown mb-3">Need more information?</p>
-                            <a href="https://wa.me/1234567890?text=I'm interested in {{ urlencode($session->title) }}"
+                            <a href="https://wa.me/94777345344?text=I'm interested in {{ urlencode($session->title) }}"
                                target="_blank"
                                class="block w-full text-center px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
                                 Contact via WhatsApp

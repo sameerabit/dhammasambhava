@@ -185,7 +185,7 @@
             <a href="{{ route('sessions.index') }}" class="px-8 py-4 bg-white text-isha-brown-dark rounded-lg hover:bg-isha-cream transition text-lg font-semibold">
                 Book Your First Session
             </a>
-            <a href="https://wa.me/1234567890" class="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-lg font-semibold">
+            <a href="https://wa.me/94777345344" class="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-lg font-semibold">
                 Contact Us on WhatsApp
             </a>
         </div>

@@ -32,7 +32,7 @@
                         <p class="text-gray-600 mb-6">Get instant responses to your questions</p>
                     </div>
 
-                    <a href="https://wa.me/1234567890?text=Hello%2C%20I%27m%20interested%20in%20learning%20more%20about%20your%20sessions"
+                    <a href="https://wa.me/94777345344?text=Hello%2C%20I%27m%20interested%20in%20learning%20more%20about%20your%20sessions"
                        target="_blank"
                        class="block w-full text-center px-6 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-bold text-lg shadow-sm">
                         Message Us on WhatsApp

@@ -208,7 +208,7 @@
                class="inline-block px-8 py-4 bg-white text-green-700 rounded-lg hover:bg-gray-100 transition text-lg font-semibold shadow-sm">
                 Book a Live Session
             </a>
-            <a href="https://wa.me/1234567890?text=I'm interested in learning more about your teachings"
+            <a href="https://wa.me/94777345344?text=I'm interested in learning more about your teachings"
                target="_blank"
                class="inline-block px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-800 transition text-lg font-semibold shadow-sm border-2 border-white">
                 Contact Us on WhatsApp
