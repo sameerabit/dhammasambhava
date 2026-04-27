@@ -24,7 +24,7 @@
                 @foreach($quotes as $quote)
                 <div class="bg-white rounded-lg shadow-sm border-l-4 border-isha-orange hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
                     @if($quote->image_path)
-                    <img src="{{ asset('storage/' . $quote->image_path) }}" alt="{{ $quote->author }}" class="w-full h-56 object-cover">
+                    <img src="{{ asset('storage/' . $quote->image_path) }}" alt="{{ $quote->author }}" class="w-full">
                     @endif
                     <div class="p-8 mb-6">
                         <svg class="w-10 h-10 text-amber-300 mb-4" fill="currentColor" viewBox="0 0 24 24">

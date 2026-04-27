@@ -18,7 +18,11 @@
             </div>
 
             <!-- Main Quote Card -->
-            <div class="bg-white rounded-lg p-10 md:p-20 shadow-sm">
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                @if($quote->image_path)
+                <img src="{{ asset('storage/' . $quote->image_path) }}" alt="{{ $quote->author }}" class="w-full">
+                @endif
+                <div class="p-10 md:p-20">
                 <!-- Quote Icon -->
                 <div class="flex justify-center mb-8">
                     <svg class="w-16 h-16 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
@@ -47,6 +51,7 @@
                     </span>
                 </div>
                 @endif
+                </div>
             </div>
 
             <!-- Share & Actions -->
