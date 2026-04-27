@@ -22,8 +22,11 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid md:grid-cols-2 gap-8">
                 @foreach($quotes as $quote)
-                <div class="bg-white rounded-lg shadow-sm p-8 border-l-4 border-isha-orange hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-6">
+                <div class="bg-white rounded-lg shadow-sm border-l-4 border-isha-orange hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
+                    @if($quote->image_path)
+                    <img src="{{ asset('storage/' . $quote->image_path) }}" alt="{{ $quote->author }}" class="w-full h-56 object-cover">
+                    @endif
+                    <div class="p-8 mb-6">
                         <svg class="w-10 h-10 text-amber-300 mb-4" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                         </svg>
@@ -32,7 +35,7 @@
                         </blockquote>
                     </div>
 
-                    <div class="flex items-center justify-between pt-6 border-t border-gray-200">
+                    <div class="flex items-center justify-between pt-6 border-t border-gray-200 px-8">
                         <div>
                             <p class="text-lg font-bold text-isha-brown-dark">— {{ $quote->author }}</p>
                             @if($quote->source)
@@ -49,11 +52,13 @@
                     </div>
 
                     @if($quote->category)
-                    <div class="mt-4">
+                    <div class="mt-4 px-8 pb-8">
                         <span class="inline-block px-3 py-1 bg-isha-cream-dark text-isha-brown-dark rounded-full text-xs font-semibold uppercase">
                             {{ $quote->category }}
                         </span>
                     </div>
+                    @else
+                    <div class="pb-8"></div>
                     @endif
                 </div>
                 @endforeach
