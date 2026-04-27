@@ -12,8 +12,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('og_title', '@yield('title', 'Dhammasambhava - Path to Peace & Wisdom')')">
-    <meta property="og:description" content="@yield('og_description', '@yield('meta_description', 'A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')')">
+    <meta property="og:title" content="@yield('og_title', 'Dhammasambhava - Path to Peace & Wisdom')">
+    <meta property="og:description" content="@yield('og_description', 'A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')">
     <meta property="og:image" content="@yield('og_image', asset('images/46501515_1960277164065269_1149918729761456128_n.jpg'))">
     <meta property="og:site_name" content="Dhammasambhava">
     <meta property="og:locale" content="en_US">
@@ -21,8 +21,8 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ url()->current() }}">
-    <meta name="twitter:title" content="@yield('twitter_title', '@yield('title', 'Dhammasambhava - Path to Peace & Wisdom')')">
-    <meta name="twitter:description" content="@yield('twitter_description', '@yield('meta_description', 'A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')')">
+    <meta name="twitter:title" content="@yield('twitter_title', 'Dhammasambhava - Path to Peace & Wisdom')">
+    <meta name="twitter:description" content="@yield('twitter_description', 'A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')">
     <meta name="twitter:image" content="@yield('twitter_image', asset('images/46501515_1960277164065269_1149918729761456128_n.jpg'))">
 
     <!-- Additional SEO -->
