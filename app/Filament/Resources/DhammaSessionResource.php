@@ -25,8 +25,13 @@ class DhammaSessionResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required(),
-                Forms\Components\TextInput::make('type')
-                    ->required(),
+                Forms\Components\Select::make('type')
+                    ->required()
+                    ->options([
+                        'dhamma' => 'Dhamma',
+                        'yoga' => 'Yoga',
+                        'both' => 'Both',
+                    ]),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('duration')

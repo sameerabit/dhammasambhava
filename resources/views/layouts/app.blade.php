@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description', 'Dhammasambhava - A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')">
-    <meta name="keywords" content="@yield('meta_keywords', 'Dhamma, Buddhism, meditation, yoga, spiritual growth, mindfulness, inner peace, Buddhist teachings, yoga classes, Sri Lanka')">
+    <meta name="description" content="@yield('meta_description')">
+    <meta name="keywords" content="@yield('meta_keywords')">
     <meta name="author" content="Dhammasambhava">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url()->current() }}">
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:type" content="@yield('og_type')">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('og_title', 'Dhammasambhava - Path to Peace & Wisdom')">
-    <meta property="og:description" content="@yield('og_description', 'A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')">
-    <meta property="og:image" content="@yield('og_image', asset('images/46501515_1960277164065269_1149918729761456128_n.jpg'))">
+    <meta property="og:title" content="@yield('og_title')">
+    <meta property="og:description" content="@yield('og_description')">
+    <meta property="og:image" content="@yield('og_image')">
     <meta property="og:site_name" content="Dhammasambhava">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ url()->current() }}">
-    <meta name="twitter:title" content="@yield('twitter_title', 'Dhammasambhava - Path to Peace & Wisdom')">
-    <meta name="twitter:description" content="@yield('twitter_description', 'A sanctuary for Dhamma teachings and Yoga practice. Join us for meditation, yoga sessions, and spiritual growth.')">
-    <meta name="twitter:image" content="@yield('twitter_image', asset('images/46501515_1960277164065269_1149918729761456128_n.jpg'))">
+    <meta name="twitter:title" content="@yield('twitter_title')">
+    <meta name="twitter:description" content="@yield('twitter_description')">
+    <meta name="twitter:image" content="@yield('twitter_image')">
 
     <!-- Additional SEO -->
     <meta name="theme-color" content="#7C3AED">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
-    <title>@yield('title', 'Dhammasambhava - Dhamma & Yoga Center')</title>
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

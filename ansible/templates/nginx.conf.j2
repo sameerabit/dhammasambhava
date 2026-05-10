@@ -36,10 +36,11 @@ server {
         deny all;
     }
 
-    # Static file caching
-    location ~* \.(jpg|jpeg|png|gif|ico|css|js|svg|woff|woff2|ttf|eot)$ {
+    # Static file caching (exclude Livewire routes so PHP can serve them)
+    location ~* ^(?!/livewire/).+\.(jpg|jpeg|png|gif|ico|css|js|svg|woff|woff2|ttf|eot)$ {
         expires 1y;
         add_header Cache-Control "public, immutable";
+        try_files $uri $uri/ /index.php?$query_string;
     }
 
     # Gzip compression
