@@ -90,7 +90,7 @@
                         </div>
                         <div>
                             <h3 class="text-sm font-semibold text-isha-brown uppercase mb-2">Duration</h3>
-                            <p class="text-lg text-isha-brown-dark">{{ $booking->session->duration }} minutes</p>
+                            <p class="text-lg text-isha-brown-dark">{{ $booking->session->duration_label }}</p>
                         </div>
                     </div>
 

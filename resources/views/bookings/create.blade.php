@@ -41,7 +41,7 @@
                             <svg class="w-5 h-5 mr-2 text-isha-orange" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                             </svg>
-                            <span>{{ $session->duration }} minutes</span>
+                            <span>{{ $session->duration_label }}</span>
                         </div>
                         <div class="flex items-center">
                             <svg class="w-5 h-5 mr-2 text-isha-orange" fill="currentColor" viewBox="0 0 20 20">
@@ -53,7 +53,7 @@
                             @if($session->price == 0)
                             <span class="text-xl font-bold text-green-600">Free</span>
                             @else
-                            <span class="text-xl font-bold text-isha-brown-dark">${{ number_format($session->price, 2) }}</span>
+                            <span class="text-xl font-bold text-isha-brown-dark">Rs. {{ number_format($session->price, 2) }}</span>
                             @endif
                         </div>
                         @if($session->max_capacity)

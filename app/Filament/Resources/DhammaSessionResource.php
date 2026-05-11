@@ -35,13 +35,18 @@ class DhammaSessionResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('duration')
+                    ->label('Duration')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->suffix('hour(s)')
+                    ->helperText('Enter duration in hours (e.g. 1.5 for 1 hour 30 minutes)')
+                    ->afterStateHydrated(fn ($state, $set) => $set('duration', $state ? $state / 60 : null))
+                    ->dehydrateStateUsing(fn ($state) => $state ? (int) round($state * 60) : null),
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()
                     ->default(0)
-                    ->prefix('$'),
+                    ->prefix('Rs.'),
                 Forms\Components\TextInput::make('max_capacity')
                     ->numeric(),
                 Forms\Components\TextInput::make('location')
@@ -62,10 +67,10 @@ class DhammaSessionResource extends Resource
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('duration')
-                    ->numeric()
+                    ->formatStateUsing(fn ($state) => $state ? rtrim(rtrim(number_format($state / 60, 2), '0'), '.') . ' hour(s)' : '-')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money()
+                    ->money('LKR')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('max_capacity')
                     ->numeric()

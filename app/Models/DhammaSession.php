@@ -36,9 +36,24 @@ class DhammaSession extends Model
         return $this->hasMany(Booking::class);
     }
 
-    /**
-     * Check if session has available capacity for new bookings.
-     */
+    public function getDurationLabelAttribute(): string
+    {
+        if (! $this->duration) {
+            return '';
+        }
+
+        $hours = intdiv($this->duration, 60);
+        $minutes = $this->duration % 60;
+
+        if ($hours && $minutes) {
+            return "{$hours} hr {$minutes} min";
+        }
+        if ($hours) {
+            return $hours . ' ' . ($hours === 1 ? 'hour' : 'hours');
+        }
+        return "{$minutes} minutes";
+    }
+
     public function hasAvailableCapacity(string $date, string $time): bool
     {
         if ($this->max_capacity === null) {
