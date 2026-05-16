@@ -90,12 +90,14 @@
                             </div>
 
                             <div>
-                                <label for="visitor_email" class="block text-sm font-semibold text-isha-brown-dark mb-2">Email Address *</label>
+                                <label for="visitor_email" class="block text-sm font-semibold text-isha-brown-dark mb-2">
+                                    Email Address
+                                    <span class="text-xs font-normal text-isha-brown">(optional)</span>
+                                </label>
                                 <input type="email"
                                        id="visitor_email"
                                        name="visitor_email"
                                        value="{{ old('visitor_email') }}"
-                                       required
                                        class="w-full px-4 py-3 border border-isha-cream-dark rounded-lg focus:ring-2 focus:ring-isha-orange focus:border-isha-orange @error('visitor_email') border-red-500 @enderror">
                                 @error('visitor_email')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -134,49 +136,6 @@
                         </div>
                     </div>
 
-                    <!-- Booking Date & Time -->
-                    <div class="border-b border-isha-cream pb-8">
-                        <h3 class="text-lg font-bold text-isha-brown-dark mb-6">Select Date & Time</h3>
-
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="booking_date" class="block text-sm font-semibold text-isha-brown-dark mb-2">Preferred Date *</label>
-                                <input type="date"
-                                       id="booking_date"
-                                       name="booking_date"
-                                       value="{{ old('booking_date') }}"
-                                       min="{{ date('Y-m-d') }}"
-                                       required
-                                       class="w-full px-4 py-3 border border-isha-cream-dark rounded-lg focus:ring-2 focus:ring-isha-orange focus:border-isha-orange @error('booking_date') border-red-500 @enderror">
-                                @error('booking_date')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label for="booking_time" class="block text-sm font-semibold text-isha-brown-dark mb-2">Preferred Time *</label>
-                                <select id="booking_time"
-                                        name="booking_time"
-                                        required
-                                        class="w-full px-4 py-3 border border-isha-cream-dark rounded-lg focus:ring-2 focus:ring-isha-orange focus:border-isha-orange @error('booking_time') border-red-500 @enderror">
-                                    <option value="">Select a time</option>
-                                    <option value="06:00" {{ old('booking_time') == '06:00' ? 'selected' : '' }}>6:00 AM</option>
-                                    <option value="07:00" {{ old('booking_time') == '07:00' ? 'selected' : '' }}>7:00 AM</option>
-                                    <option value="08:00" {{ old('booking_time') == '08:00' ? 'selected' : '' }}>8:00 AM</option>
-                                    <option value="09:00" {{ old('booking_time') == '09:00' ? 'selected' : '' }}>9:00 AM</option>
-                                    <option value="10:00" {{ old('booking_time') == '10:00' ? 'selected' : '' }}>10:00 AM</option>
-                                    <option value="16:00" {{ old('booking_time') == '16:00' ? 'selected' : '' }}>4:00 PM</option>
-                                    <option value="17:00" {{ old('booking_time') == '17:00' ? 'selected' : '' }}>5:00 PM</option>
-                                    <option value="18:00" {{ old('booking_time') == '18:00' ? 'selected' : '' }}>6:00 PM</option>
-                                    <option value="19:00" {{ old('booking_time') == '19:00' ? 'selected' : '' }}>7:00 PM</option>
-                                </select>
-                                @error('booking_time')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Special Requests -->
                     <div>
                         <label for="special_requests" class="block text-sm font-semibold text-isha-brown-dark mb-2">
@@ -188,23 +147,6 @@
                                   rows="4"
                                   class="w-full px-4 py-3 border border-isha-cream-dark rounded-lg focus:ring-2 focus:ring-isha-orange focus:border-isha-orange"
                                   placeholder="Any dietary restrictions, accessibility needs, or questions...">{{ old('special_requests') }}</textarea>
-                    </div>
-
-                    <!-- Terms & Conditions -->
-                    <div class="bg-isha-cream rounded-lg p-6">
-                        <label class="flex items-start cursor-pointer">
-                            <input type="checkbox"
-                                   name="terms_accepted"
-                                   required
-                                   class="mt-1 mr-3 h-5 w-5 text-isha-orange border-isha-cream-dark rounded focus:ring-isha-orange">
-                            <span class="text-sm text-isha-brown">
-                                I understand that this booking is subject to availability and will be confirmed via email.
-                                I agree to arrive 10 minutes early and follow the center's guidelines. *
-                            </span>
-                        </label>
-                        @error('terms_accepted')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
                     </div>
 
                     <!-- Submit Button -->

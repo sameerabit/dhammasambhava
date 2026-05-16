@@ -32,27 +32,18 @@ class BookingController extends Controller
         // Validate request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'nullable|email|max:255',
             'whatsapp' => 'required|string|max:20',
-            'booking_date' => 'required|date|after:today',
-            'booking_time' => 'required|date_format:H:i',
             'notes' => 'nullable|string|max:1000',
         ]);
-
-        // Check capacity
-        if (!$session->hasAvailableCapacity($validated['booking_date'], $validated['booking_time'])) {
-            return back()->withErrors([
-                'booking_date' => 'This session is full for the selected date and time. Please choose another slot.',
-            ])->withInput();
-        }
 
         // Create booking
         $booking = $session->bookings()->create([
             'name' => $validated['name'],
-            'email' => $validated['email'],
+            'email' => $validated['email'] ?? null,
             'whatsapp' => $validated['whatsapp'],
-            'booking_date' => $validated['booking_date'],
-            'booking_time' => $validated['booking_time'],
+            'booking_date' => now()->toDateString(),
+            'booking_time' => now()->format('H:i'),
             'notes' => $validated['notes'] ?? null,
             'status' => 'pending',
             'ip_address' => $request->ip(),
