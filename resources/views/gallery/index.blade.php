@@ -15,22 +15,6 @@
     </div>
 </section>
 
-<!-- Gallery Navigation -->
-<section class="bg-white border-b shadow-sm sticky top-16 z-30">
-    <div class="container mx-auto px-4 py-4">
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="{{ route('gallery.index') }}"
-               class="px-6 py-2 rounded-full bg-isha-orange text-white transition">
-                Photos
-            </a>
-            <a href="{{ route('gallery.teachings') }}"
-               class="px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition">
-                Video Teachings
-            </a>
-        </div>
-    </div>
-</section>
-
 <!-- Gallery Grid -->
 <section class="py-12">
     <div class="container mx-auto px-4">
@@ -98,10 +82,6 @@
             <a href="{{ route('sessions.index') }}"
                class="inline-block px-8 py-4 bg-white text-isha-orange rounded-lg hover:bg-gray-100 transition text-lg font-semibold shadow-lg">
                 Browse Sessions
-            </a>
-            <a href="{{ route('gallery.teachings') }}"
-               class="inline-block px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-lg font-semibold shadow-lg">
-                Watch Video Teachings
             </a>
         </div>
     </div>

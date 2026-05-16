@@ -11,7 +11,6 @@ class GalleryController extends Controller
     {
         $mediaItems = Media::published()
             ->ofType('image')
-            ->inCategory('gallery')
             ->ordered()
             ->paginate(12);
 

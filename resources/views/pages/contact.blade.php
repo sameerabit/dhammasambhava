@@ -174,11 +174,11 @@
                     <p class="text-gray-600 text-sm">Explore wisdom teachings</p>
                 </a>
 
-                <a href="{{ route('gallery.teachings') }}"
+                <a href="{{ route('gallery.index') }}"
                    class="bg-white rounded-lg p-6 shadow-sm hover:shadow-sm transition text-center">
-                    <div class="text-4xl mb-3">🎥</div>
-                    <h3 class="font-bold text-isha-brown-dark mb-2">Video Teachings</h3>
-                    <p class="text-gray-600 text-sm">Watch recorded sessions</p>
+                    <div class="text-4xl mb-3">🖼️</div>
+                    <h3 class="font-bold text-isha-brown-dark mb-2">Gallery</h3>
+                    <p class="text-gray-600 text-sm">View our photo gallery</p>
                 </a>
 
                 <a href="{{ route('about') }}"

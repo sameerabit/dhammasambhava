@@ -123,7 +123,6 @@
                     <a href="{{ route('home') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Home</a>
                     <a href="{{ route('quotes.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Quotes</a>
                     <a href="{{ route('sessions.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Sessions</a>
-                    <a href="{{ route('gallery.teachings') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Teachings</a>
                     <a href="{{ route('gallery.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Gallery</a>
                     <a href="{{ route('about') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">About</a>
                 </div>
@@ -141,7 +140,6 @@
                 <a href="{{ route('home') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Home</a>
                 <a href="{{ route('quotes.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Quotes</a>
                 <a href="{{ route('sessions.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Sessions</a>
-                <a href="{{ route('gallery.teachings') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Teachings</a>
                 <a href="{{ route('gallery.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Gallery</a>
                 <a href="{{ route('about') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">About</a>
             </div>
@@ -166,7 +164,7 @@
                     <ul class="space-y-3 text-sm">
                         <li><a href="{{ route('sessions.index') }}" class="hover:text-isha-orange transition-colors">Book a Session</a></li>
                         <li><a href="{{ route('quotes.index') }}" class="hover:text-isha-orange transition-colors">Daily Quotes</a></li>
-                        <li><a href="{{ route('gallery.teachings') }}" class="hover:text-isha-orange transition-colors">Video Teachings</a></li>
+                        <li><a href="{{ route('gallery.index') }}" class="hover:text-isha-orange transition-colors">Gallery</a></li>
                         <li><a href="{{ route('about') }}" class="hover:text-isha-orange transition-colors">About Us</a></li>
                     </ul>
                 </div>
