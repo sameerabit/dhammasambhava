@@ -61,9 +61,11 @@ class MediaResource extends Resource
                 Tables\Columns\TextColumn::make('type')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('title')
+                    ->getStateUsing(fn ($record) => $record->title ?: $record->file_path)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('file_path')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('youtube_url')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('category')
