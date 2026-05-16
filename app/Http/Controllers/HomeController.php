@@ -22,6 +22,13 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        return view('home', compact('quoteOfTheDay', 'featuredSessions'));
+        // Get latest published quotes with images for the wisdom gallery
+        $wisdomQuotes = Quote::where('is_published', true)
+            ->whereNotNull('image_path')
+            ->latest()
+            ->take(6)
+            ->get();
+
+        return view('home', compact('quoteOfTheDay', 'featuredSessions', 'wisdomQuotes'));
     }
 }

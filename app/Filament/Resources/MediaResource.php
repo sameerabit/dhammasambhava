@@ -23,20 +23,34 @@ class MediaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('type')
-                    ->required(),
+                Forms\Components\FileUpload::make('file_path')
+                    ->label('Upload Image / Video')
+                    ->image()
+                    ->acceptedFileTypes(['image/*', 'video/*'])
+                    ->columnSpanFull()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state) {
+                            $set('type', 'image');
+                            $set('is_published', true);
+                        }
+                    })
+                    ->live(),
+                Forms\Components\TextInput::make('youtube_url')
+                    ->label('Or paste YouTube URL')
+                    ->url()
+                    ->columnSpanFull()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state) {
+                            $set('type', 'youtube');
+                            $set('is_published', true);
+                        }
+                    })
+                    ->live(),
                 Forms\Components\TextInput::make('title')
-                    ->required(),
-                Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('file_path'),
-                Forms\Components\TextInput::make('youtube_url'),
-                Forms\Components\TextInput::make('category')
-                    ->required(),
-                Forms\Components\Toggle::make('is_published')
-                    ->required(),
-                Forms\Components\TextInput::make('display_order')
-                    ->numeric(),
+                Forms\Components\Hidden::make('type')->default('image'),
+                Forms\Components\Hidden::make('category')->default('general'),
+                Forms\Components\Hidden::make('is_published')->default(true),
             ]);
     }
 
