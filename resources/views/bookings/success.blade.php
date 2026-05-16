@@ -47,10 +47,10 @@
                     <div class="border-b border-gray-200 pb-4">
                         <h3 class="text-sm font-semibold text-isha-brown uppercase mb-2">Session</h3>
                         <div class="flex items-center justify-between">
-                            <p class="text-lg font-bold text-isha-brown-dark">{{ $booking->session->title }}</p>
+                            <p class="text-lg font-bold text-isha-brown-dark">{{ $booking->dhammaSession->title }}</p>
                             <span class="px-3 py-1 rounded-full text-sm font-semibold capitalize
-                                {{ $booking->session->type === 'dhamma' ? 'bg-blue-100 text-blue-800' : ($booking->session->type === 'yoga' ? 'bg-green-100 text-green-800' : 'bg-purple-100 text-purple-800') }}">
-                                {{ $booking->session->type }}
+                                {{ $booking->dhammaSession->type === 'dhamma' ? 'bg-blue-100 text-blue-800' : ($booking->dhammaSession->type === 'yoga' ? 'bg-green-100 text-green-800' : 'bg-purple-100 text-purple-800') }}">
+                                {{ $booking->dhammaSession->type }}
                             </span>
                         </div>
                     </div>
@@ -85,12 +85,12 @@
                                 <svg class="w-5 h-5 inline mr-2 text-isha-orange" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                                 </svg>
-                                {{ $booking->session->location }}
+                                {{ $booking->dhammaSession->location }}
                             </p>
                         </div>
                         <div>
                             <h3 class="text-sm font-semibold text-isha-brown uppercase mb-2">Duration</h3>
-                            <p class="text-lg text-isha-brown-dark">{{ $booking->session->duration_label }}</p>
+                            <p class="text-lg text-isha-brown-dark">{{ $booking->dhammaSession->duration_label }}</p>
                         </div>
                     </div>
 
@@ -140,7 +140,7 @@
                         </svg>
                         <span><strong>Questions?</strong> Contact us anytime via WhatsApp or email if you need to reschedule or have questions.</span>
                     </li>
-                    @if($booking->session->type === 'yoga' || $booking->session->type === 'both')
+                    @if($booking->dhammaSession->type === 'yoga' || $booking->dhammaSession->type === 'both')
                     <li class="flex items-start">
                         <svg class="w-6 h-6 mr-3 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -161,7 +161,7 @@
                    class="block text-center px-6 py-4 bg-gray-200 text-isha-brown rounded-lg hover:bg-gray-300 transition font-semibold">
                     Return to Homepage
                 </a>
-                <a href="https://wa.me/{{ $booking->whatsapp_number ?: '1234567890' }}?text=Booking confirmation for {{ urlencode($booking->session->title) }}"
+                <a href="https://wa.me/{{ $booking->whatsapp_number ?: '1234567890' }}?text=Booking confirmation for {{ urlencode($booking->dhammaSession->title) }}"
                    target="_blank"
                    class="block text-center px-6 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold">
                     Contact via WhatsApp
