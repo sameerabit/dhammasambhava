@@ -31,20 +31,21 @@ class BookingController extends Controller
 
         // Validate request
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'whatsapp' => 'required|string|max:20',
-            'notes' => 'nullable|string|max:1000',
+            'visitor_name' => 'required|string|max:255',
+            'visitor_email' => 'nullable|email|max:255',
+            'visitor_phone' => 'required|string|max:20',
+            'whatsapp_number' => 'nullable|string|max:20',
+            'special_requests' => 'nullable|string|max:1000',
         ]);
 
         // Create booking
         $booking = $session->bookings()->create([
-            'name' => $validated['name'],
-            'email' => $validated['email'] ?? null,
-            'whatsapp' => $validated['whatsapp'],
+            'name' => $validated['visitor_name'],
+            'email' => $validated['visitor_email'] ?? null,
+            'whatsapp' => $validated['whatsapp_number'] ?? $validated['visitor_phone'],
             'booking_date' => now()->toDateString(),
             'booking_time' => now()->format('H:i'),
-            'notes' => $validated['notes'] ?? null,
+            'notes' => $validated['special_requests'] ?? null,
             'status' => 'pending',
             'ip_address' => $request->ip(),
         ]);
