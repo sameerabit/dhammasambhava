@@ -20,7 +20,7 @@
                 Welcome to Dhammasambhava
             </h1>
             <p class="text-xl md:text-2xl mb-12 font-light text-isha-cream-light">
-                A Sanctuary for Spiritual Growth & Inner Peace
+                Join us for guidance and spiritual techniques
             </p>
 
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
@@ -63,8 +63,7 @@
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-8">Our Offerings</h2>
             <p class="text-lg text-isha-brown leading-relaxed mb-16">
-                Experience the transformative power of ancient wisdom combined with modern practice.
-                Join us for meditation, yoga, and spiritual teachings.
+                Spiritual teachings based on wisdom — experience the transformative power of ancient practice for conscious living.
             </p>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -75,13 +74,13 @@
                 </div>
                 <div class="bg-isha-cream p-8 rounded-lg shadow-sm">
                     <div class="text-4xl mb-4">🕉️</div>
-                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Yoga Classes</h3>
-                    <p class="text-isha-brown">Unite body, mind, and spirit through traditional yoga asanas.</p>
+                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Conscious Life</h3>
+                    <p class="text-isha-brown">Transforming compulsive living into conscious living.</p>
                 </div>
                 <div class="bg-isha-cream p-8 rounded-lg shadow-sm">
                     <div class="text-4xl mb-4">☮️</div>
-                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Guided Meditation</h3>
-                    <p class="text-isha-brown">Learn mindfulness and meditation techniques for daily life.</p>
+                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Experience Inner Stillness and Awareness</h3>
+                    <p class="text-isha-brown">Guided meditation to awaken inner stillness and awareness.</p>
                 </div>
             </div>
         </div>
@@ -97,6 +96,9 @@
         <div class="grid md:grid-cols-3 gap-8">
             @foreach($featuredSessions as $session)
             <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+                @if($session->image_path)
+                <img src="{{ asset('storage/' . $session->image_path) }}" alt="{{ $session->title }}" class="w-full h-48 object-cover">
+                @endif
                 <div class="p-8">
                     <div class="flex items-center justify-between mb-6">
                         <span class="px-3 py-1 bg-isha-cream-dark text-isha-brown-dark rounded-full text-sm font-semibold capitalize">
@@ -186,7 +188,7 @@
                 Book Your First Session
             </a>
             <a href="https://wa.me/94777345344" class="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-lg font-semibold">
-                Contact Us on WhatsApp
+                WhatsApp: +94 777 345 344
             </a>
         </div>
     </div>

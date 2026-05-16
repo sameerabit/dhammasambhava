@@ -7,10 +7,10 @@
 <section class="bg-isha-cream py-20">
     <div class="container mx-auto px-4">
         <h1 class="text-4xl md:text-5xl font-bold text-isha-brown-dark mb-6 text-center">
-            Dhamma & Yoga Sessions
+            Discussions and Spiritual Practices
         </h1>
         <p class="text-xl text-isha-brown text-center max-w-2xl mx-auto">
-            Choose from our variety of meditation, dhamma teachings, and yoga classes
+            Choose from our variety of meditation, dhamma teachings, and sadhana sessions
         </p>
     </div>
 </section>
@@ -42,6 +42,9 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($sessions as $session)
             <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
+                @if($session->image_path)
+                <img src="{{ asset('storage/' . $session->image_path) }}" alt="{{ $session->title }}" class="w-full h-48 object-cover">
+                @endif
                 <div class="p-8">
                     <!-- Type Badge & Price -->
                     <div class="flex items-center justify-between mb-6">
