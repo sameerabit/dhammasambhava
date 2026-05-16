@@ -63,14 +63,14 @@
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-8">Our Offerings</h2>
             <p class="text-lg text-isha-brown leading-relaxed mb-16">
-                Spiritual teachings based on wisdom — experience the transformative power of ancient practice for conscious living.
+                Join us for guidance and spiritual techniques.
             </p>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-isha-cream p-8 rounded-lg shadow-sm">
                     <div class="text-4xl mb-4">🧘</div>
-                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Dhamma Teachings</h3>
-                    <p class="text-isha-brown">Explore Buddhist philosophy and meditation practices for inner peace.</p>
+                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Spiritual Teachings</h3>
+                    <p class="text-isha-brown">Based on wisdom.</p>
                 </div>
                 <div class="bg-isha-cream p-8 rounded-lg shadow-sm">
                     <div class="text-4xl mb-4">🕉️</div>
@@ -146,27 +146,22 @@
             Timeless teachings to inspire and guide your spiritual journey
         </p>
 
+        @if($wisdomQuotes->count() > 0)
         <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            @php
-            $quoteImages = [
-                'quotes/504379733_1313500207448732_1488199036778016310_n.jpg',
-                'quotes/517143990_1311787730953313_3213854276871139559_n.jpg',
-                'quotes/520724727_1324482903017129_5864715493622473452_n.jpg',
-                'quotes/526317849_1330636219068464_5423863308206625618_n.jpg',
-                'quotes/529710680_1344001687731917_5262041184879371982_n.jpg',
-                'quotes/529760974_1338729494925803_536497021397670558_n.jpg',
-            ];
-            @endphp
-
-            @foreach(array_slice($quoteImages, 0, 6) as $image)
-            <a href="{{ route('quotes.index') }}" class="group relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
-                <img src="{{ asset('images/' . $image) }}"
-                     alt="Wisdom Quote"
-                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            @foreach($wisdomQuotes as $quote)
+            <a href="{{ route('quotes.show', $quote) }}" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                <img src="{{ asset('storage/' . $quote->image_path) }}"
+                     alt="{{ $quote->author }}"
+                     class="w-full object-cover group-hover:scale-105 transition-transform duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-isha-brown-dark/80 via-isha-brown-dark/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-4">
+                    <p class="text-white text-sm font-semibold line-clamp-2 italic">"{{ Str::limit($quote->text, 80) }}"</p>
+                    <p class="text-isha-cream-light text-xs mt-1">— {{ $quote->author }}</p>
+                </div>
             </a>
             @endforeach
         </div>
+        @endif
 
         <div class="text-center mt-12">
             <a href="{{ route('quotes.index') }}" class="inline-block px-8 py-4 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition text-lg font-semibold">
@@ -187,9 +182,7 @@
             <a href="{{ route('sessions.index') }}" class="px-8 py-4 bg-white text-isha-brown-dark rounded-lg hover:bg-isha-cream transition text-lg font-semibold">
                 Book Your First Session
             </a>
-            <a href="https://wa.me/94777345344" class="px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-lg font-semibold">
-                WhatsApp: +94 777 345 344
-            </a>
+            <x-whatsapp-button class="text-lg px-8 py-4" />
         </div>
     </div>
 </section>

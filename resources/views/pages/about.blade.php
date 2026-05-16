@@ -251,11 +251,7 @@
                class="inline-block px-8 py-4 bg-white text-isha-orange rounded-lg hover:bg-gray-100 transition text-lg font-semibold shadow-lg">
                 Browse Our Sessions
             </a>
-            <a href="https://wa.me/94777345344?text=I'd like to learn more about Dhammasambhava"
-               target="_blank"
-               class="inline-block px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-lg font-semibold shadow-lg">
-                Contact Us on WhatsApp
-            </a>
+            <x-whatsapp-button message="I'd like to learn more about Dhammasambhava" class="text-lg px-8 py-4" />
         </div>
     </div>
 </section>
