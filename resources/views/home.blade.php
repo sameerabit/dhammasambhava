@@ -19,8 +19,11 @@
             <h1 class="text-4xl md:text-6xl font-bold mb-6">
                 {{ __('site.hero_title') }}
             </h1>
-            <p class="text-xl md:text-2xl mb-12 font-light text-isha-cream-light">
+            <p class="text-xl md:text-2xl mb-6 font-light text-isha-cream-light">
                 {{ __('site.hero_subtitle') }}
+            </p>
+            <p class="text-base md:text-lg mb-12 italic text-isha-cream-light/80 max-w-2xl mx-auto font-serif">
+                {{ __('site.hero_tagline') }}
             </p>
 
             <div class="flex flex-col sm:flex-row gap-6 justify-center">

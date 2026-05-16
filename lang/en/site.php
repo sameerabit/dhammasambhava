@@ -13,6 +13,7 @@ return [
     // Home
     'hero_title' => 'Welcome to Dhammasambhava',
     'hero_subtitle' => 'Join us for guidance and spiritual techniques',
+    'hero_tagline' => '"I have made the monastery in my heart — for all Buddhas unite, without being a priest in a temple."',
     'browse_sessions' => 'Browse Sessions',
     'explore_wisdom' => 'Explore Wisdom',
     'quote_of_the_day' => 'Quote of the Day',
