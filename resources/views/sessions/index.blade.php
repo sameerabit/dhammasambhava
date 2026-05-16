@@ -7,10 +7,10 @@
 <section class="bg-isha-cream py-20">
     <div class="container mx-auto px-4">
         <h1 class="text-4xl md:text-5xl font-bold text-isha-brown-dark mb-6 text-center">
-            Discussions and Spiritual Practices
+            {{ __('site.sessions_title') }}
         </h1>
         <p class="text-xl text-isha-brown text-center max-w-2xl mx-auto">
-            Choose from our variety of meditation, dhamma teachings, and sadhana sessions
+            {{ __('site.sessions_subtitle') }}
         </p>
     </div>
 </section>

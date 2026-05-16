@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="{{ app()->getLocale() }}" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Noto+Sans+Sinhala:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -80,6 +80,21 @@
             font-family: 'Inter', sans-serif;
         }
 
+        html[lang="si"] body,
+        html[lang="si"] p,
+        html[lang="si"] span,
+        html[lang="si"] a,
+        html[lang="si"] li {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+
+        html[lang="si"] h1,
+        html[lang="si"] h2,
+        html[lang="si"] h3,
+        html[lang="si"] h4 {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -114,17 +129,30 @@
                     <div class="text-3xl">☸️</div>
                     <div>
                         <h1 class="text-2xl md:text-3xl font-bold text-isha-brown-dark">Dhammasambhava</h1>
-                        <p class="text-xs text-isha-brown hidden md:block font-sans">Path to Peace & Wisdom</p>
+                        <p class="text-xs text-isha-brown hidden md:block font-sans">{{ __('site.tagline') }}</p>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="{{ route('home') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Home</a>
-                    <a href="{{ route('quotes.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Quotes</a>
-                    <a href="{{ route('sessions.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Sessions</a>
-                    <a href="{{ route('gallery.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">Gallery</a>
-                    <a href="{{ route('about') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">About</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ route('home') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">{{ __('site.nav_home') }}</a>
+                    <a href="{{ route('quotes.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">{{ __('site.nav_quotes') }}</a>
+                    <a href="{{ route('sessions.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">{{ __('site.nav_sessions') }}</a>
+                    <a href="{{ route('gallery.index') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">{{ __('site.nav_gallery') }}</a>
+                    <a href="{{ route('about') }}" class="text-isha-brown hover:text-isha-orange font-medium font-sans transition-colors">{{ __('site.nav_about') }}</a>
+
+                    <!-- Language Toggle -->
+                    @if(app()->getLocale() === 'en')
+                        <a href="{{ route('lang.switch', 'si') }}"
+                           class="px-3 py-1 rounded-full border border-isha-orange text-isha-orange hover:bg-isha-orange hover:text-white transition text-sm font-semibold font-sans">
+                            සිං
+                        </a>
+                    @else
+                        <a href="{{ route('lang.switch', 'en') }}"
+                           class="px-3 py-1 rounded-full border border-isha-orange text-isha-orange hover:bg-isha-orange hover:text-white transition text-sm font-semibold font-sans">
+                            EN
+                        </a>
+                    @endif
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -137,11 +165,18 @@
 
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 pb-4">
-                <a href="{{ route('home') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Home</a>
-                <a href="{{ route('quotes.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Quotes</a>
-                <a href="{{ route('sessions.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Sessions</a>
-                <a href="{{ route('gallery.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">Gallery</a>
-                <a href="{{ route('about') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">About</a>
+                <a href="{{ route('home') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">{{ __('site.nav_home') }}</a>
+                <a href="{{ route('quotes.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">{{ __('site.nav_quotes') }}</a>
+                <a href="{{ route('sessions.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">{{ __('site.nav_sessions') }}</a>
+                <a href="{{ route('gallery.index') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">{{ __('site.nav_gallery') }}</a>
+                <a href="{{ route('about') }}" class="block py-2 text-isha-brown hover:text-isha-orange font-sans">{{ __('site.nav_about') }}</a>
+                <div class="pt-2 border-t border-gray-100">
+                    @if(app()->getLocale() === 'en')
+                        <a href="{{ route('lang.switch', 'si') }}" class="inline-block px-3 py-1 rounded-full border border-isha-orange text-isha-orange text-sm font-semibold">සිං</a>
+                    @else
+                        <a href="{{ route('lang.switch', 'en') }}" class="inline-block px-3 py-1 rounded-full border border-isha-orange text-isha-orange text-sm font-semibold">EN</a>
+                    @endif
+                </div>
             </div>
         </div>
     </nav>
@@ -157,25 +192,25 @@
             <div class="grid md:grid-cols-3 gap-12">
                 <div>
                     <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Dhammasambhava</h3>
-                    <p class="text-sm leading-relaxed">A sanctuary for spiritual growth through Dhamma teachings and Yoga practice.</p>
+                    <p class="text-sm leading-relaxed">{{ __('site.footer_desc') }}</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Quick Links</h3>
+                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">{{ __('site.quick_links') }}</h3>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="{{ route('sessions.index') }}" class="hover:text-isha-orange transition-colors">Book a Session</a></li>
-                        <li><a href="{{ route('quotes.index') }}" class="hover:text-isha-orange transition-colors">Daily Quotes</a></li>
-                        <li><a href="{{ route('gallery.index') }}" class="hover:text-isha-orange transition-colors">Gallery</a></li>
-                        <li><a href="{{ route('about') }}" class="hover:text-isha-orange transition-colors">About Us</a></li>
+                        <li><a href="{{ route('sessions.index') }}" class="hover:text-isha-orange transition-colors">{{ __('site.nav_sessions') }}</a></li>
+                        <li><a href="{{ route('quotes.index') }}" class="hover:text-isha-orange transition-colors">{{ __('site.nav_quotes') }}</a></li>
+                        <li><a href="{{ route('gallery.index') }}" class="hover:text-isha-orange transition-colors">{{ __('site.nav_gallery') }}</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-isha-orange transition-colors">{{ __('site.nav_about') }}</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">Connect</h3>
-                    <p class="text-sm mb-4 leading-relaxed">Join us on our journey to peace and enlightenment.</p>
+                    <h3 class="text-xl font-bold text-isha-cream-light mb-4 font-sans">{{ __('site.connect') }}</h3>
+                    <p class="text-sm mb-4 leading-relaxed">{{ __('site.connect_desc') }}</p>
                     <x-whatsapp-button />
                 </div>
             </div>
             <div class="border-t border-isha-brown mt-12 pt-8 text-center text-sm">
-                <p>&copy; {{ date('Y') }} Dhammasambhava. All rights reserved.</p>
+                <p>{{ __('site.rights', ['year' => date('Y')]) }}</p>
             </div>
         </div>
     </footer>
@@ -191,7 +226,6 @@
     </a>
 
     <script>
-        // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });

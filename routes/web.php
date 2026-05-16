@@ -32,5 +32,13 @@ Route::get('/teachings', [GalleryController::class, 'teachings'])->name('gallery
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/contact', 'pages.contact')->name('contact');
 
+// Language switcher
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'si'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
 // SEO
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');

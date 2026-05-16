@@ -7,10 +7,10 @@
 <section class="bg-isha-cream py-16">
     <div class="container mx-auto px-4">
         <h1 class="text-4xl md:text-5xl font-bold text-isha-brown-dark mb-4 text-center">
-            Wisdom & Inspiration
+            {{ __('site.quotes_title') }}
         </h1>
         <p class="text-xl text-isha-brown text-center max-w-2xl mx-auto">
-            Timeless teachings to guide your journey toward enlightenment and inner peace
+            {{ __('site.quotes_subtitle') }}
         </p>
     </div>
 </section>

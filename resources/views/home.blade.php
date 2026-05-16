@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dhammasambhava - Path to Peace & Wisdom')
+@section('title', 'Dhammasambhava - ' . __('site.tagline'))
 
 @section('content')
 <!-- Hero Section with Background Image -->
@@ -17,18 +17,18 @@
     <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-4xl mx-auto text-center text-white">
             <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                Welcome to Dhammasambhava
+                {{ __('site.hero_title') }}
             </h1>
             <p class="text-xl md:text-2xl mb-12 font-light text-isha-cream-light">
-                Join us for guidance and spiritual techniques
+                {{ __('site.hero_subtitle') }}
             </p>
 
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
                 <a href="{{ route('sessions.index') }}" class="px-8 py-4 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition text-lg font-semibold shadow-lg">
-                    Browse Sessions
+                    {{ __('site.browse_sessions') }}
                 </a>
                 <a href="{{ route('quotes.index') }}" class="px-8 py-4 bg-white text-isha-brown-dark rounded-lg hover:bg-isha-cream transition text-lg font-semibold shadow-lg">
-                    Explore Wisdom
+                    {{ __('site.explore_wisdom') }}
                 </a>
             </div>
         </div>
@@ -41,14 +41,14 @@
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-lg p-10 md:p-16 shadow-sm">
-                <p class="text-sm uppercase tracking-widest text-isha-orange mb-6 text-center">Quote of the Day</p>
+                <p class="text-sm uppercase tracking-widest text-isha-orange mb-6 text-center">{{ __('site.quote_of_the_day') }}</p>
                 <blockquote class="text-2xl md:text-3xl italic text-isha-brown-dark mb-8 leading-relaxed font-serif text-center">
                     "{{ $quoteOfTheDay->text }}"
                 </blockquote>
                 <p class="text-lg text-isha-brown-dark font-semibold text-center">— {{ $quoteOfTheDay->author }}</p>
                 <div class="mt-8 text-center">
                     <a href="{{ route('quotes.show', $quoteOfTheDay) }}" class="inline-block px-6 py-3 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition font-semibold">
-                        Read More
+                        {{ __('site.read_more') }}
                     </a>
                 </div>
             </div>
@@ -61,26 +61,26 @@
 <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-8">Our Offerings</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-8">{{ __('site.our_offerings') }}</h2>
             <p class="text-lg text-isha-brown leading-relaxed mb-16">
-                Join us for guidance and spiritual techniques.
+                {{ __('site.offerings_subtitle') }}
             </p>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-isha-cream p-8 rounded-lg shadow-sm">
                     <div class="text-4xl mb-4">🧘</div>
-                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Spiritual Teachings</h3>
-                    <p class="text-isha-brown">Based on wisdom.</p>
+                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">{{ __('site.offering_1_title') }}</h3>
+                    <p class="text-isha-brown">{{ __('site.offering_1_desc') }}</p>
                 </div>
                 <div class="bg-isha-cream p-8 rounded-lg shadow-sm">
                     <div class="text-4xl mb-4">🕉️</div>
-                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Conscious Life</h3>
-                    <p class="text-isha-brown">Transforming compulsive living into conscious living.</p>
+                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">{{ __('site.offering_2_title') }}</h3>
+                    <p class="text-isha-brown">{{ __('site.offering_2_desc') }}</p>
                 </div>
                 <div class="bg-isha-cream p-8 rounded-lg shadow-sm">
                     <div class="text-4xl mb-4">☮️</div>
-                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">Experience Inner Stillness and Awareness</h3>
-                    <p class="text-isha-brown">Guided meditation to awaken inner stillness and awareness.</p>
+                    <h3 class="text-xl font-bold text-isha-brown-dark mb-3">{{ __('site.offering_3_title') }}</h3>
+                    <p class="text-isha-brown">{{ __('site.offering_3_desc') }}</p>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
 @if($featuredSessions->count() > 0)
 <section class="py-20 bg-isha-cream">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-16 text-center">Featured Sessions</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-16 text-center">{{ __('site.featured_sessions') }}</h2>
 
         <div class="grid md:grid-cols-3 gap-8">
             @foreach($featuredSessions as $session)
@@ -105,7 +105,7 @@
                             {{ $session->type }}
                         </span>
                         @if($session->price == 0)
-                        <span class="text-green-600 font-bold">Free</span>
+                        <span class="text-green-600 font-bold">{{ __('site.free') }}</span>
                         @else
                         <span class="text-isha-brown-dark font-bold">Rs. {{ number_format($session->price, 2) }}</span>
                         @endif
@@ -122,7 +122,7 @@
                     </div>
 
                     <a href="{{ route('sessions.show', $session) }}" class="block w-full text-center px-4 py-3 bg-isha-orange text-white rounded hover:bg-isha-navy transition">
-                        View Details & Book
+                        {{ __('site.view_details_book') }}
                     </a>
                 </div>
             </div>
@@ -131,7 +131,7 @@
 
         <div class="text-center mt-16">
             <a href="{{ route('sessions.index') }}" class="inline-block px-8 py-4 bg-isha-brown-dark text-white rounded-lg hover:bg-isha-navy transition">
-                View All Sessions →
+                {{ __('site.view_all_sessions') }}
             </a>
         </div>
     </div>
@@ -141,9 +141,9 @@
 <!-- Wisdom Gallery -->
 <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-4 text-center">Words of Wisdom</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-isha-brown-dark mb-4 text-center">{{ __('site.words_of_wisdom') }}</h2>
         <p class="text-center text-isha-brown mb-12 max-w-2xl mx-auto">
-            Timeless teachings to inspire and guide your spiritual journey
+            {{ __('site.wisdom_subtitle') }}
         </p>
 
         @if($wisdomQuotes->count() > 0)
@@ -165,7 +165,7 @@
 
         <div class="text-center mt-12">
             <a href="{{ route('quotes.index') }}" class="inline-block px-8 py-4 bg-isha-orange text-white rounded-lg hover:bg-isha-navy transition text-lg font-semibold">
-                View All Quotes →
+                {{ __('site.view_all_quotes') }}
             </a>
         </div>
     </div>
@@ -174,13 +174,13 @@
 <!-- Call to Action -->
 <section class="py-24 bg-isha-brown-dark text-white">
     <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Begin Your Journey Today</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">{{ __('site.cta_title') }}</h2>
         <p class="text-xl mb-10 max-w-2xl mx-auto text-isha-cream">
-            Join our community and discover the path to inner peace, wisdom, and spiritual awakening.
+            {{ __('site.cta_subtitle') }}
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
             <a href="{{ route('sessions.index') }}" class="px-8 py-4 bg-white text-isha-brown-dark rounded-lg hover:bg-isha-cream transition text-lg font-semibold">
-                Book Your First Session
+                {{ __('site.book_first_session') }}
             </a>
             <x-whatsapp-button class="text-lg px-8 py-4" />
         </div>
